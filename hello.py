@@ -1,4 +1,8 @@
+from random import randint
+
 from flask import Flask, render_template
+
+# http://flask.pocoo.org/docs/0.12/quickstart/#a-minimal-application
 app = Flask(__name__)
 
 
@@ -7,7 +11,7 @@ def index():
     return "Index!"
 
 
-@app.route("/hello/<string:name>/")
+@app.route("/hello/<string:name>")
 def hello(name):
     quotes = [
         "'If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.' -- John Louis von Neumann ",
@@ -20,6 +24,7 @@ def hello(name):
     quote = quotes[randomNumber]
     return render_template('test.html', **locals())
 
-if __name__ == "__main__":
-    app.run()
+# https://stackoverflow.com/questions/41940663/why-cant-i-change-the-host-and-port-that-my-flask-app-runs-on
+# if __name__ == "__main__":
+#     app.run(host='0.0.0.0', port=80)
 
